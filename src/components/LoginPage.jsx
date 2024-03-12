@@ -1,11 +1,39 @@
-import { googleImg } from "./constants";
+import { googleImg } from "../utils/constants";
+import { useState } from "react";
+import { auth, googleProvider } from "../firebase/firebase";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
-function LoginPage() {
+const LoginPage = () => {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  // console.log(auth?.currentUser?.email);
+
+  const signIn = async () => {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      navigate("/todo"); // navigate to dashboard after successful login
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const signInWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+      navigate("/todo"); // navigate to dashboard after successful login
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content w-full flex-col lg:flex-row-reverse">
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form className="card-body">
+          <div className="card-body">
             <div className="form-control">
               <label className="input input-bordered flex items-center gap-2">
                 <svg
@@ -21,6 +49,7 @@ function LoginPage() {
                   type="email"
                   className="grow"
                   placeholder="Email"
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </label>
@@ -43,23 +72,29 @@ function LoginPage() {
                   type="password"
                   className="grow"
                   placeholder="Password"
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                 />
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-info text-white">Login</button>
-            </div>
-            <div className="form-control mt-">
-              <button className="btn btn-outline btn-info">
-                <img src={googleImg} alt="" /> Login With Google
+              <button className="btn btn-info text-white" onClick={signIn}>
+                Sign In
               </button>
             </div>
-          </form>
+            <div className="form-control">
+              <button
+                className="btn btn-outline btn-info"
+                onClick={signInWithGoogle}
+              >
+                <img src={googleImg} alt="google" /> Login With Google
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default LoginPage;
