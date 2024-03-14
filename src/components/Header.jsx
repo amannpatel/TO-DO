@@ -1,8 +1,11 @@
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import { useNavigate } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { profileImg } from "../utils/constants";
 
 const Header = () => {
+  const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const logout = async () => {
     try {
@@ -26,10 +29,11 @@ const Header = () => {
             className="btn btn-ghost btn-circle avatar"
           >
             <div className="w-10 rounded-full">
-              <img
-                alt="profile"
-                src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-              />
+              {user?.photoURL ? (
+                <img alt="profile" src={user?.photoURL} />
+              ) : (
+                <img alt="profile" src={profileImg} />
+              )}
             </div>
           </div>
           <ul
