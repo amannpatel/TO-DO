@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
-import Todo from "./Todo";
+import Todo from "./components/Todo";
 import { db } from "./firebase";
 import {
   query,

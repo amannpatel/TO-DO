@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
-import Todo from "../newComp/Todo";
+import Todo from "./Todo";
 import { db } from "../firebase/firebase";
 import Header from "./Header";
 import {
