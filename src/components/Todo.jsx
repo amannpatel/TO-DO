@@ -5,8 +5,8 @@ const Todo = ({ todo, toggleComplete, deleteTodo }) => {
     <li
       className={
         todo.completed
-          ? "flex justify-between bg-slate-400 p-4 my-2 capitalize"
-          : "flex justify-between bg-slate-200 p-4 my-2 capitalize"
+          ? "flex rounded-2xl justify-between bg-teal-200 p-4 my-2 capitalize"
+          : "flex rounded-2xl justify-between bg-teal-100 p-4 my-2 capitalize"
       }
     >
       <div className="flex">

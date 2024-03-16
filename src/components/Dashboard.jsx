@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { AiOutlinePlus } from "react-icons/ai";
+import { IoAddCircleOutline } from "react-icons/io5";
 import Todo from "./Todo";
 import { db } from "../firebase/firebase";
 import Header from "./Header";
@@ -59,21 +59,21 @@ const Dashboard = () => {
   return (
     <>
       <Header />
-      <div className="h-screen w-screen p-4 bg-gradient-to-r from-[#2F80ED] to-[#1CB5E0]">
-        <div className="bg-slate-100 max-w-[500px] w-full m-auto rounded-md shadow-xl p-4">
-          <h3 className="text-3xl font-bold text-center text-gray-800 p-2">
-            Todo App
+      <div className="h-screen w-screen p-4 ">
+        <div className="max-w-[750px] w-full m-auto rounded-2xl shadow-xl p-4">
+          <h3 className="text-3xl font-bold text-center text-teal-800 p-2">
+            Start Adding Todos
           </h3>
           <form onSubmit={createTodo} className="flex justify-between">
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="border p-2 w-full text-xl"
+              className="border rounded-2xl p-2 w-full text-xl"
               type="text"
-              placeholder="Add Todo"
+              placeholder="Add Todo..."
             />
-            <button className="border p-4 ml-2 bg-purple-500 text-slate-100">
-              <AiOutlinePlus size={30} />
+            <button className="border px-4 py-2 ml-2 rounded-2xl bg-teal-400 text-slate-100">
+              <IoAddCircleOutline size={25} />
             </button>
           </form>
           <ul>
