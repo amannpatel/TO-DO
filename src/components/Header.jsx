@@ -19,7 +19,9 @@ const Header = () => {
   return (
     <div className="navbar bg-base-100 mt-3 shadow-lg rounded-2xl">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl rounded-full">✍🏻 Todo App</a>
+        <a className="btn btn-ghost text-xl rounded-full">
+          <div>{user?.displayName ? user?.displayName : "User"}</div>
+        </a>
       </div>
       <div className="flex-none">
         <div className="dropdown dropdown-end">
@@ -36,6 +38,7 @@ const Header = () => {
               )}
             </div>
           </div>
+
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
