@@ -16,7 +16,7 @@ const LoginPage = () => {
       await createUserWithEmailAndPassword(auth, email, password);
       navigate("/todo"); // navigate to dashboard after successful login
     } catch (err) {
-      console.error(err);
+      alert(err);
     }
   };
 

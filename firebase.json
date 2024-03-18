@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "add-your-todos",
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
